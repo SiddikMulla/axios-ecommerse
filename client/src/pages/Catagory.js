@@ -1,10 +1,21 @@
-// Category.js
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import './Catagory.css';
 
-function Category() {
-  // Mock data for products in the category
+function Catagory (){
+  const { name } = useParams();
+
+  let catagoryTitle = '';
+  if (name === 'electronics') {
+    catagoryTitle = 'Electronics';
+  } else if (name === 'clothing') {
+    catagoryTitle = 'Clothing';
+  } else {
+    catagoryTitle = 'Unknown Category';
+  }
+
+
   const products = [
     {
       id: 1,
@@ -27,12 +38,11 @@ function Category() {
       price: 30,
       image: 'https://via.placeholder.com/150',
     },
-    
   ];
 
   return (
     <div className="category-container">
-      <h2 className="category-title">Category Name</h2>
+      <h2 className="category-title">{catagoryTitle}</h2>
       <div className="product-grid">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
@@ -42,4 +52,4 @@ function Category() {
   );
 }
 
-export default Category;
+export default Catagory;
