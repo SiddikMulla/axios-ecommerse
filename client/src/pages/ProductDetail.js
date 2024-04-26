@@ -3,7 +3,7 @@ import React from 'react';
 import './ProductDetail.css';
 
 function ProductDetail() {
-  // Mock data for product
+  // add for product
   const product = {
     id: 1,
     name: 'Product Name',

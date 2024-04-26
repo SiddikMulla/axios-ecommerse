@@ -1,11 +1,8 @@
-// src/services/userService.js
-
 import axios from 'axios';
 
-// Base URL for your backend API
-const BASE_URL = 'http://localhost:8000/api/users'; // Update this with your actual backend URL
+const BASE_URL = 'http://localhost:8000/api/users';
 
-// Create a new user
+// Creating a new user
 export const createUser = async (userData) => {
   try {
     const response = await axios.post(BASE_URL, userData);

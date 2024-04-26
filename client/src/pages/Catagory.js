@@ -20,7 +20,14 @@ function Category() {
       price: 20,
       image: 'https://via.placeholder.com/150',
     },
-    // Add more products as needed
+    {
+      id: 3,
+      name: 'Product 3',
+      description: 'Description of product 3',
+      price: 30,
+      image: 'https://via.placeholder.com/150',
+    },
+    
   ];
 
   return (

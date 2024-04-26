@@ -1,31 +1,26 @@
-// Login.js
 import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
-import { UserContext } from '../contexts/UserContext'; // Import UserContext
+import { withRouter } from 'react-router-dom'; 
+import { UserContext } from '../contexts/UserContext';
 import './Login.css';
 
-function Login() {
-  const { loginUser } = useContext(UserContext); // Access loginUser function from UserContext
-  const history = useHistory(); // Access history object for redirection
+function Login(props) { 
+  const { loginUser } = useContext(UserContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   const handleLogin = async () => {
     try {
-      // Check if username and password are not empty
       if (!username || !password) {
         setError('Please enter both username and password.');
         return;
       }
 
-      // Call loginUser function from userService.js
       const success = await loginUser(username, password);
 
       if (success) {
-        // Redirect to dashboard or perform any other actions upon successful login
         console.log('Login successful');
-        history.push('/dashboard'); // Example redirection to '/dashboard'
+        props.history.push('/dashboard');
       } else {
         setError('Invalid username or password. Please try again.');
       }
@@ -46,4 +41,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default withRouter(Login);
