@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react';
-import { withRouter } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { UserContext } from '../contexts/UserContext';
 import './Login.css';
 
-function Login(props) { 
+function Login() {
   const { loginUser } = useContext(UserContext);
+  const navigate = useNavigate(); // Use useNavigate hook for navigation
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -20,7 +21,7 @@ function Login(props) {
 
       if (success) {
         console.log('Login successful');
-        props.history.push('/dashboard');
+        navigate('/dashboard'); // Use navigate function to navigate to '/dashboard'
       } else {
         setError('Invalid username or password. Please try again.');
       }
@@ -41,4 +42,4 @@ function Login(props) {
   );
 }
 
-export default withRouter(Login);
+export default Login;
